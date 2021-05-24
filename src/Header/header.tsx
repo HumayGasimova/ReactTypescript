@@ -11,7 +11,7 @@
 import './header.scss';
 
 type HeaderProps = {
-    text: string
+   fruits: Array<string>
 }
 
 /**
@@ -24,12 +24,6 @@ export const Header = (props: HeaderProps) => {
      * State
      */
 
-    let fruits: Array<string> = [
-        "red",
-        "green",
-        "blue",
-        "yellow"
-    ]
 
     /**
      * Methods
@@ -42,8 +36,10 @@ export const Header = (props: HeaderProps) => {
 
     return(
         <ul className="header">
-            {fruits.map((el, i) => {
-                return <li key={i}>{el}</li>
+            {props.fruits.map((el, i) => {
+                let color : string = ""
+                color = el;
+                return <li key={i} style={{color : el}}>{el}</li>
             })}
         </ul>
     );
