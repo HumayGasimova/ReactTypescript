@@ -1,6 +1,7 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader')
 
 const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
     template: __dirname + '/src/index.html',
@@ -8,6 +9,8 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
     inject: 'body'
 });
 const DotenvPlugin = new Dotenv();
+const CheckerPluginConfig = new CheckerPlugin();
+
 
 console.log(__dirname)
 module.exports = {
@@ -16,9 +19,8 @@ module.exports = {
         rules:[
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
-            },
+                loader: 'awesome-typescript-loader'
+            }
         ]
     },
     resolve: {
@@ -36,7 +38,8 @@ module.exports = {
     },
     plugins: [
         HTMLWebpackPluginConfig,
-        DotenvPlugin
+        DotenvPlugin,
+        CheckerPluginConfig
     ],
     mode: 'development'
 }
