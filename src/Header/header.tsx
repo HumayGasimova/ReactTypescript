@@ -24,22 +24,28 @@ export const Header = (props: HeaderProps) => {
      * State
      */
 
+    let fruits: Array<string> = [
+        "red",
+        "green",
+        "blue",
+        "yellow"
+    ]
 
     /**
      * Methods
      */
    
-    // useInterval(() => {
-    // }, [])
 
     /**
      * Markup
      */
 
     return(
-        <div className="header">
-           {props.text}
-        </div>
+        <ul className="header">
+            {fruits.map((el, i) => {
+                return <li key={i}>{el}</li>
+            })}
+        </ul>
     );
 }
 
